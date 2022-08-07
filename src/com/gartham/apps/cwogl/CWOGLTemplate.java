@@ -1,4 +1,4 @@
-package com.gartham.templates.jogl;
+package com.gartham.apps.cwogl;
 
 import javax.swing.JFrame;
 
@@ -7,8 +7,8 @@ import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.util.FPSAnimator;
 
-public class LaunchTemplate {
-	private static final int DEFAULT_WIDTH = 1200, DEFAULT_HEIGHT = 800;
+public class CWOGLTemplate {
+	private static final int DEFAULT_WIDTH = 1920, DEFAULT_HEIGHT = 1080;
 
 	public static void main(String[] args) {
 		GLProfile prof = GLProfile.get(GLProfile.GL4);
@@ -16,7 +16,7 @@ public class LaunchTemplate {
 		// TODO Request GL instance capabilities here.
 
 		GLCanvas canvas = new GLCanvas(capabilities);
-		canvas.addGLEventListener(new TemplateEventListener());// Performs rendering.
+		canvas.addGLEventListener(new CWOGLEventListener());// Performs rendering.
 
 		JFrame window = new JFrame();
 		window.setTitle("[WINDOW TITLE]");
@@ -32,6 +32,6 @@ public class LaunchTemplate {
 		// Include an FPS-based animator, if desired.
 		// Without this, the GLCanvas's EventListener's #display(GLAutoDrawable) method
 		// is only called a set number of times.
-		new FPSAnimator(canvas, 144, true).start();
+//		new FPSAnimator(canvas, 144, true).start();
 	}
 }
