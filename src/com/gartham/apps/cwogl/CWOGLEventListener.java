@@ -44,7 +44,7 @@ public final class CWOGLEventListener implements GLEventListener {
 	@Override
 	public void init(GLAutoDrawable drawable) {
 		GL4 gl = drawable.getGL().getGL4();
-//		gl.glEnable(GL4.GL_DEPTH_TEST);
+		gl.glEnable(GL4.GL_DEPTH_TEST);
 
 		// Create shaders
 		int vertshader = gl.glCreateShader(GL4.GL_VERTEX_SHADER),
@@ -100,6 +100,7 @@ public final class CWOGLEventListener implements GLEventListener {
 	@Override
 	public void display(GLAutoDrawable drawable) {
 		GL4 gl = drawable.getGL().getGL4();
+		gl.glClear(GL4.GL_DEPTH_BUFFER_BIT);
 		gl.glUniform1f(gl.glGetUniformLocation(prog, "rotation"), rot = (rot + .15f) % 360);
 		gl.glDrawArrays(GL.GL_TRIANGLES, 0, CUBE.length / 3);
 	}
