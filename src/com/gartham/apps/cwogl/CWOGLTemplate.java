@@ -32,6 +32,6 @@ public class CWOGLTemplate {
 		// Include an FPS-based animator, if desired.
 		// Without this, the GLCanvas's EventListener's #display(GLAutoDrawable) method
 		// is only called a set number of times.
-//		new FPSAnimator(canvas, 144, true).start();
+		new FPSAnimator(canvas, 1, true).start();
 	}
 }

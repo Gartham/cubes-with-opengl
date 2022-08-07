@@ -12,6 +12,9 @@ import com.jogamp.opengl.GLEventListener;
 
 public final class CWOGLEventListener implements GLEventListener {
 
+	private int prog;
+	private float rot;
+
 	public static String loadText(InputStream is) {
 		Scanner s = new Scanner(is);
 		StringBuilder sb = new StringBuilder();
@@ -41,6 +44,7 @@ public final class CWOGLEventListener implements GLEventListener {
 	@Override
 	public void init(GLAutoDrawable drawable) {
 		GL4 gl = drawable.getGL().getGL4();
+//		gl.glEnable(GL4.GL_DEPTH_TEST);
 
 		// Create shaders
 		int vertshader = gl.glCreateShader(GL4.GL_VERTEX_SHADER),
@@ -53,7 +57,7 @@ public final class CWOGLEventListener implements GLEventListener {
 		gl.glCompileShader(fragshader);
 
 		// Create GPU program
-		int prog = gl.glCreateProgram();
+		prog = gl.glCreateProgram();
 		gl.glAttachShader(prog, vertshader);
 		gl.glAttachShader(prog, fragshader);
 		gl.glLinkProgram(prog);
@@ -96,6 +100,7 @@ public final class CWOGLEventListener implements GLEventListener {
 	@Override
 	public void display(GLAutoDrawable drawable) {
 		GL4 gl = drawable.getGL().getGL4();
+		gl.glUniform1f(gl.glGetUniformLocation(prog, "rotation"), rot = (rot + .15f) % 360);
 		gl.glDrawArrays(GL.GL_TRIANGLES, 0, CUBE.length / 3);
 	}
 }
